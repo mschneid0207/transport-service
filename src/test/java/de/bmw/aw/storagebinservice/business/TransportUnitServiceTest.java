@@ -1,5 +1,6 @@
-package de.bmw.aw.transportservice.business;
+package de.bmw.aw.storagebinservice.business;
 
+import de.bmw.aw.transportservice.business.TransportUnitService;
 import de.bmw.aw.transportservice.data.TransportUnitRepository;
 import de.bmw.aw.transportservice.model.TransportUnit;
 import org.junit.Test;
