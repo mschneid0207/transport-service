@@ -7,6 +7,8 @@ import de.bmw.aw.transportservice.model.TransportUnit;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +35,14 @@ public class TransportOrderController {
         TransportOrder transportOrder = transportOrderService.createTransportOrder(transportUnit);
         //return new ResponseEntity(transportOrder, HttpStatus.CREATED);
         return transportOrder;
+    }
+
+    @PostMapping("/transport_order_with_rabbitmq")
+    @ApiOperation(value = "creates new transport order via rabbitmq")
+    public ResponseEntity createTransportOrderRabbitMq(@RequestBody TransportUnit transportUnit) {
+
+        transportOrderService.createTransportOrderByRabbitMq(transportUnit);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping("/transport_units")

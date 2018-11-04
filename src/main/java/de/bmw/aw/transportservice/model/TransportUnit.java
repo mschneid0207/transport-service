@@ -6,13 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class TransportUnit {
+public class TransportUnit implements Serializable {
 
     public enum TransportType {
         SMALL, MEDIUM, BIG;
